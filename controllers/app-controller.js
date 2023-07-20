@@ -18,7 +18,7 @@ class AppController {
 
         appContainer.innerHTML = `
         <header>
-            <h1>Netflix Score</h1>
+            <!-- <h1>Netflix Score</h1> -->
             <a href="./index.html">lista</a>
             <a href="./new-show.html">nuovo</a>
         </header>
