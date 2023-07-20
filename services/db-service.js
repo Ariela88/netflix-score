@@ -1,13 +1,12 @@
 class DBService {
 
     static getAllShows() {
-        const url = "https://64b512c1f3dbab5a95c6a48c.mockapi.io/shows";
+        const url = "https://64b512caf3dbab5a95c6a515.mockapi.io/NetflixFilm";
         return fetch(url).then((resp) => resp.json());
     }
 
     static updateShow(show) {
-        const updateUrl =
-            "https://64b512c1f3dbab5a95c6a48c.mockapi.io/shows/" + show.id;
+        const updateUrl = "https://64b512caf3dbab5a95c6a515.mockapi.io/NetflixFilm" + show.id;
         return fetch(updateUrl, {
             method: "put",
             body: JSON.stringify(show),
@@ -24,13 +23,17 @@ class DBService {
         show.downVotes++;
         return this.updateShow(show);
     }
+
+
+static createShow(show) {
+    const url = "https://64b512caf3dbab5a95c6a515.mockapi.io/NetflixFilm";
+    return fetch(url, {
+        method: "post",
+        body: JSON.stringify(show),
+        headers: { "content-type": "application/json" },
+    }).then((resp) => resp.json());
 }
-
-// function getAllShows() {
-//     const url = "https://64b512c1f3dbab5a95c6a48c.mockapi.io/shows";
-//     return fetch(url).then((resp) => resp.json());
-// }
-
+}
 // function updateShow(show) {
 //     const updateUrl =
 //         "https://64b512c1f3dbab5a95c6a48c.mockapi.io/shows/" + show.id;

@@ -35,17 +35,27 @@ class AppController {
 
     renderShows(){
 
+        if(this.chooseSortUp === true){
+            
+            renderShows();
+            ;
+        }else if(this.chooseSortDown === true){
+            
+            renderShows();;
+        }
+        
+
         const btnContainer = document.getElementById('btn-container');
         btnContainer.innerHTML = '';
 
         const sortUpButton = document.createElement('button');
         sortUpButton.appendChild(document.createTextNode('ordina per upvotes'));
-        sortUpButton.addEventListener('click', () => this.sortByUpvotes())
+        sortUpButton.addEventListener('click', () => this.chooseSortUp())
         btnContainer.appendChild(sortUpButton);
 
         const sortDownButton = document.createElement('button');
         sortDownButton.appendChild(document.createTextNode('ordina per downvotes'));
-        sortDownButton.addEventListener('click', () => this.sortByDownvotes())
+        sortDownButton.addEventListener('click', () => this.chooseSortDown())
         btnContainer.appendChild(sortDownButton);
 
 
@@ -97,13 +107,15 @@ class AppController {
         })
     }
 
-    sortByUpvotes(){
-        this.shows.sort((s1, s2) => s2.upVotes - s1.upVotes);
+    chooseSortUp(){
+        
+        
+        this.shows.sort((s1, s2) => s2.upVotes - s1.upVotes)
         this.renderShows();
     }
 
-    sortByDownvotes(){
-        this.shows.sort((s1, s2) => s2.downVotes - s1.downVotes);
+    chooseSortDown(){
+        this.shows.sort((s1, s2) => s2.downVotes - s1.downVotes)
         this.renderShows();
     }
 }
