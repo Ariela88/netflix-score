@@ -1,6 +1,6 @@
 button{
     border: none;
-    background: transparent;
+   
     cursor: pointer;
 }
 
@@ -11,4 +11,25 @@ span{
 
 #shows-container{
     font-size: x-large;
+}
+
+.dialog-box{
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    padding: 20px;
+    background-color: #f1f1f1;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.dialog-box{
+    display: flex;
+    flex-direction: column;
+}
+
+#dialog-btn{
+    margin-top: 20px;
 }

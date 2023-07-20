@@ -26,7 +26,7 @@ class DBService {
 
 
 static createShow(show) {
-    const url = "https://64b512caf3dbab5a95c6a515.mockapi.io/NetflixFilm";
+    const url = "https://64b512caf3dbab5a95c6a515.mockapi.io/NetflixFilm" + show.id;
     return fetch(url, {
         method: "post",
         body: JSON.stringify(show),
@@ -34,12 +34,3 @@ static createShow(show) {
     }).then((resp) => resp.json());
 }
 }
-// function updateShow(show) {
-//     const updateUrl =
-//         "https://64b512c1f3dbab5a95c6a48c.mockapi.io/shows/" + show.id;
-//     return fetch(updateUrl, {
-//         method: "put",
-//         body: JSON.stringify(show),
-//         headers: { "content-type": "application/json" }
-//     }).then((resp) => resp.json());
-// }

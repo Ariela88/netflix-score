@@ -7,7 +7,7 @@ function sendData(event) {
 
     const form = document.forms['create'];
 
-    // const title = form['title'].value;
+
 
     const formData = new FormData(form);
 
