@@ -1,5 +1,4 @@
-const app = new AppController();
-
-app.init();
-
-
+document.addEventListener('DOMContentLoaded', () => {
+    const app = new AppController();
+    app.init();
+});

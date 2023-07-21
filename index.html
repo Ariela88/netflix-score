@@ -1,25 +1,79 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Netflix Score</title>
     <link rel="stylesheet" href="./style.css">
 </head>
-<div class="logo"> 
-    <h1> NETFLIX</h1>
-</div>
+<header>
+    <div class="logo">
+        <h1> NETFLIX</h1>
+    </div>
 </header>
+<div class="add-div"> 
+<button id="openDialogBtn"><img src="./assets/add-square-svgrepo-com.svg"  alt="add button"> </button>
+<p> Aggiungi uno Show</p>
+</div>
 <div id="app">
 
 </div>
-<button id="open-dialog-button" onclick=""> Aggiungi nuovo film </button>
+
+
+<dialog id="favDialog">
+    <h3> Aggiungi uno Show alla lista</h3>
+    <form id="dialogForm" name="create" onsubmit="sendData(event)">
+        <div>
+            <label for="title"> Inserisci il Titolo </label>
+            <input type="text" name="title" id="title" minlength="3">
+        </div>
+        <div> <label for="author"> Inserisci l'Autore </label>
+            <input type="text" name="author" id="author" minlength="3">
+        </div>
+        <div>
+            <label for="imageUrl"> Inserisci l'URL dell'immagine </label>
+            <input type="text" name="imageUrl" id="imageUrl" >
+        </div>
+        <div>
+            <label for="isOver"> Spunta se la serie è conclusa </label>
+            <input type="checkbox" name="isOver" id="isOver">
+        </div>
+
+      
+        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button id="confirmBtn" value="default" type="submit">Invia</button>
+
+
+
+
+    </form>
+</dialog>
+<footer>
+    Corso FrontEnd | Via Bosco - 16100 Genova (GE) ITALIA | C.F. ABC000000000 | P.Iva 000000000 <br>
+    <a class="trans-color-text" href="#">info@tuosito.it</a> | <span itemprop="telephone"><a href="#">+39 333 33 33
+            333</a></span>
+    <br><a target="_blank" href="#"> privacy</a> | <a target="_blank" href="#"> cookie policy</a>
+
+    <div class="social-cont">
+        <ul class="social-list">
+
+            <li><a target="_blank" href="#"></a></li>
+            <li><a target="_blank" href="#"></a></li>
+            <li><a target="_blank" href="#"></a></li>
+
+        </ul>
+        <div class="floatstop"></div>
+    </div><!--/fine social cont-->
+
+    Designed by Manuela<br>
+   
+</footer>
+
 
 <script src="./services/db-service.js"></script>
 <script src="./controllers/app-controller.js"></script>
+
 <script src="./main.js"></script>
 
 </html>
-
-
-
