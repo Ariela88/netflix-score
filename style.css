@@ -3,11 +3,12 @@ body {
     color: aliceblue;
 }
 
-header{
+header {
 
     margin: 0;
     padding: 0;
 }
+
 h1 {
     font-size: 15vw;
     letter-spacing: 10px;
@@ -17,8 +18,6 @@ h1 {
     padding: 0;
     margin: 0;
 }
-
-
 
 
 .add-div {
@@ -38,7 +37,7 @@ button {
     font-size: 16px;
     width: 180px;
     padding: 8px;
-   
+
     border-radius: 5px;
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
 
@@ -51,8 +50,8 @@ span {
     font-weight: bold;
 }
 
-#create{
-    top:0
+#create {
+    top: 0
 }
 
 
@@ -86,20 +85,20 @@ li button {
 
 
 
-.div-btn-vote{
+.div-btn-vote {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 30px;
 
-   
+
 }
 
-.div-btn-vote button{
+.div-btn-vote button {
     width: 30%;
     margin: 0;
     padding: 0;
-   
+
 }
 
 
@@ -111,10 +110,10 @@ li button {
     flex-wrap: wrap;
     align-items: baseline;
     justify-content: center;
-   
+
 }
 
-#btn-container{
+#btn-container {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -123,10 +122,10 @@ li button {
 }
 
 .dialog-box {
-    
+
     top: 50%;
     left: 20%;
-    
+
     width: 300px;
     padding: 20px;
     background-color: #f1f1f1;
@@ -161,7 +160,7 @@ dialog {
 
 #favDialog {
     display: flex;
-   
+
     width: 500px;
     height: 500px;
     justify-content: space-evenly;
@@ -175,12 +174,12 @@ dialog {
     gap: 30px;
 }
 
-#favDialog button{
+#favDialog button {
     width: 20%;
 }
 
 form {
-    
+
     font-size: 16px;
     gap: 40px;
     display: flex;
@@ -191,7 +190,7 @@ form {
 
 }
 
-input label{
+input label {
     margin-left: 20px;
 }
 

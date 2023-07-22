@@ -4,50 +4,26 @@ class AppController {
         this.orderMethod = 'upvote';
         this.form = document.getElementById('create');
         this.favDialog = document.getElementById('favDialog');
-
         this.openDialogBtn = document.getElementById('openDialogBtn');
         this.confirmBtn = this.favDialog.querySelector("#confirmBtn");
+        this.favDialog.querySelector('button[value="cancel"]').addEventListener('click', () => this.favDialog.close());
     }
-
-
-
 
     toggleFormDialog() {
-
-        if (this.form.style.display === 'none') {
-            this.form.style.display = 'block';
-        } else {
-            this.form.style.display = 'none';
-        }
+        this.form.style.display = (this.form.style.display === 'none') ? 'block' : 'none';
     }
+
     init() {
         this.render();
-
-        this.favDialog = document.getElementById('favDialog');
-
-
         const form = document.getElementById('favDialog');
-
-
         form.addEventListener('submit', (event) => this.sendData(event));
         DBService.getAllShows()
             .then(shows => {
                 this.shows = shows;
                 this.renderShows();
             })
-            .catch(error => {
-                console.error("Errore durante il recupero degli spettacoli:", error);
-            });
+            .catch(error => console.error("Errore durante il recupero degli spettacoli:", error));
         this.openDialogBtn.addEventListener('click', () => this.toggleFormDialog());
-
-
-        const favDialog = document.getElementById('favDialog');
-
-
-
-        this.favDialog.querySelector('button[value="cancel"]').addEventListener('click', () => {
-            this.favDialog.close();
-        });
     }
 
     render() {
@@ -67,24 +43,22 @@ class AppController {
         const btnContainer = document.getElementById('btn-container');
         btnContainer.innerHTML = '';
 
-        const sortUpButton = document.createElement('button');
-        sortUpButton.appendChild(document.createTextNode('ordina per upvotes'));
-        sortUpButton.addEventListener('click', () => this.chooseSort('upvote'));
-        btnContainer.appendChild(sortUpButton);
+        const createSortButton = (text, method) => {
+            const button = document.createElement('button');
+            button.appendChild(document.createTextNode(text));
+            button.addEventListener('click', () => this.chooseSort(method));
+            return button;
+        };
 
-        const sortDownButton = document.createElement('button');
-        sortDownButton.appendChild(document.createTextNode('ordina per downvotes'));
-        sortDownButton.addEventListener('click', () => this.chooseSort('downVote'));
-        btnContainer.appendChild(sortDownButton);
+        btnContainer.appendChild(createSortButton('ordina per upvotes', 'upvote'));
+        btnContainer.appendChild(createSortButton('ordina per downvotes', 'downVote'));
 
         const showsContainer = document.getElementById('shows-container');
         showsContainer.innerHTML = '';
 
         const sortedShows = this.getSortedShows();
 
-        for (let i = 0; i < sortedShows.length; i++) {
-            const show = sortedShows[i];
-
+        for (const show of sortedShows) {
             const listElement = document.createElement('li');
 
             const imageShow = document.createElement('img');
@@ -96,27 +70,27 @@ class AppController {
             titleStrong.appendChild(titleNode);
             listElement.appendChild(titleStrong);
 
-            const upButton = document.createElement('button');
-            upButton.appendChild(document.createTextNode('👍'));
-            upButton.addEventListener('click', () => this.upvoteShow(show));
+            const createButton = (text, action) => {
+                const button = document.createElement('button');
+                button.appendChild(document.createTextNode(text));
+                button.addEventListener('click', action);
+                return button;
+            };
 
-            const divBtnVote = document.createElement('div');
-            const downButton = document.createElement('button');
-            downButton.appendChild(document.createTextNode('👎'));
-            downButton.addEventListener('click', () => this.downvoteShow(show));
-
+            const upButton = createButton('👍', () => this.upvoteShow(show));
+            const downButton = createButton('👎', () => this.downvoteShow(show));
             downButton.classList.add('down-button');
             upButton.classList.add('up-button');
-            listElement.appendChild(divBtnVote);
+
+            const divBtnVote = document.createElement('div');
+            divBtnVote.classList.add('div-btn-vote');
             divBtnVote.appendChild(upButton);
             divBtnVote.appendChild(downButton);
-            divBtnVote.classList.add('div-btn-vote');
 
-            const deleteBtn = document.createElement('button');
-            const deleteNodeBtn = document.createTextNode('Elimina');
-            deleteBtn.appendChild(deleteNodeBtn);
+            listElement.appendChild(divBtnVote);
+
+            const deleteBtn = createButton('Elimina', () => this.deleteTheShow(show));
             listElement.appendChild(deleteBtn);
-            deleteBtn.addEventListener('click', () => this.deleteTheShow(show));
 
             showsContainer.appendChild(listElement);
         }
@@ -132,19 +106,16 @@ class AppController {
             title: formData.get('title'),
             author: formData.get('author'),
             imageUrl: formData.get('imageUrl'),
-            isOver: formData.get('isOver') === "on" ? true : false,
+            isOver: formData.get('isOver') === "on",
             upVotes: 0,
             downVotes: 0,
-            id:100
+            id: 10
         };
 
         console.log(newShow);
 
         DBService.createShow(newShow)
-            // renderShows()
-
             .then(show => {
-
                 setTimeout(() => {
                     window.location = '/index.html';
                 }, 500);
@@ -152,11 +123,7 @@ class AppController {
             .catch(error => {
                 console.error("Errore durante la creazione dello spettacolo:", error);
             });
-
-
     }
-
-
 
     chooseSort(orderMethod) {
         this.orderMethod = orderMethod;
@@ -204,14 +171,4 @@ class AppController {
                 console.error("Errore durante l'eliminazione dello spettacolo:", error);
             });
     }
-
-
-
-
-
-
-
 }
-
-
-
