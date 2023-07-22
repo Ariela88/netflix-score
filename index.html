@@ -21,15 +21,15 @@
 </div>
 
 
-<dialog id="favDialog">
-    <h3> Aggiungi uno Show alla lista</h3>
-    <form id="dialogForm" name="create" onsubmit="sendData(event)">
+<dialog  id="create" style="display: none;">    
+    <form id="favDialog" name="create" onsubmit="sendData(event) ">
         <div>
+            <h3> Aggiungi uno Show alla lista</h3>
             <label for="title"> Inserisci il Titolo </label>
-            <input type="text" name="title" id="title" minlength="3">
+            <input type="text" name="title" id="title" required>
         </div>
         <div> <label for="author"> Inserisci l'Autore </label>
-            <input type="text" name="author" id="author" minlength="3">
+            <input type="text" name="author" id="author" required>
         </div>
         <div>
             <label for="imageUrl"> Inserisci l'URL dell'immagine </label>
@@ -41,7 +41,7 @@
         </div>
 
       
-        <button value="cancel" formmethod="dialog">Cancel</button>
+        <button value="cancel">Cancel</button>
         <button id="confirmBtn" value="default" type="submit">Invia</button>
 
 
