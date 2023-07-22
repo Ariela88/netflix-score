@@ -1,3 +1,2 @@
-
-    const app = new AppController();
-    app.init(); 
+const appController = new AppController();
+    appController.init();

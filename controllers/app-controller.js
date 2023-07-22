@@ -4,14 +4,16 @@ class AppController {
         this.orderMethod = 'upvote';
         this.form = document.getElementById('create');
         this.favDialog = document.getElementById('favDialog');
-       
+
         this.openDialogBtn = document.getElementById('openDialogBtn');
         this.confirmBtn = this.favDialog.querySelector("#confirmBtn");
     }
 
+    
+
 
     toggleFormDialog() {
-        // Se il form è visibile, lo nasconde; altrimenti, lo mostra
+
         if (this.form.style.display === 'none') {
             this.form.style.display = 'block';
         } else {
@@ -20,6 +22,14 @@ class AppController {
     }
     init() {
         this.render();
+
+        this.favDialog = document.getElementById('favDialog');
+
+        // Ottieni il riferimento al form
+        const form = document.getElementById('favDialog');
+
+        // Assegna l'evento submit al form
+        form.addEventListener('submit', (event) => this.sendData(event));
         DBService.getAllShows()
             .then(shows => {
                 this.shows = shows;
@@ -28,20 +38,12 @@ class AppController {
             .catch(error => {
                 console.error("Errore durante il recupero degli spettacoli:", error);
             });
-            this.openDialogBtn.addEventListener('click', () => this.toggleFormDialog());
+        this.openDialogBtn.addEventListener('click', () => this.toggleFormDialog());
 
 
-            const favDialog = document.getElementById('favDialog');
+        const favDialog = document.getElementById('favDialog');
 
 
-        this.openDialogBtn.addEventListener('click', () => {
-            // this.form.reset();
-            if (typeof this.favDialog.showModal === "function") {
-                this.favDialog.showModal();
-            } else {
-                this.favDialog.show();
-            }
-        });
 
         this.favDialog.querySelector('button[value="cancel"]').addEventListener('click', () => {
             this.favDialog.close();
@@ -102,7 +104,7 @@ class AppController {
             const downButton = document.createElement('button');
             downButton.appendChild(document.createTextNode('👎'));
             downButton.addEventListener('click', () => this.downvoteShow(show));
-            
+
             downButton.classList.add('down-button');
             upButton.classList.add('up-button');
             listElement.appendChild(divBtnVote);
@@ -119,9 +121,41 @@ class AppController {
             showsContainer.appendChild(listElement);
         }
     }
-    
-    
-    // ... Altre funzioni della classe AppController ...
+
+    sendData(event) {
+        event.preventDefault();
+
+        const form = document.forms['create'];
+        const formData = new FormData(form);
+
+        const newShow = {
+            title: formData.get('title'),
+            author: formData.get('author'),
+            imageUrl: formData.get('imageUrl'),
+            isOver: formData.get('isOver') === "on" ? true : false,
+            upVotes: 0,
+            downVotes: 0
+        };
+
+        console.log(newShow);
+
+        DBService.createShow(newShow)
+        // renderShows()
+        
+            .then(show => {
+
+                setTimeout(() => {
+                    window.location = '/index.html';
+                }, 500);
+            })
+            .catch(error => {
+                console.error("Errore durante la creazione dello spettacolo:", error);
+            });
+
+           
+    }
+
+
 
     chooseSort(orderMethod) {
         this.orderMethod = orderMethod;
@@ -170,39 +204,11 @@ class AppController {
             });
     }
 
-    sendData(event) {
-        event.preventDefault();
-    
-        const form = document.forms['create'];
-        const formData = new FormData(form);
-    
-        const newShow = {
-            title: formData.get('title'),
-            author: formData.get('author'),
-            imageUrl: formData.get('imageUrl'),
-            isOver: formData.get('isOver') === "on" ? true : false,
-            upVotes: 0,
-            downVotes: 0
-        };
 
-        console.log(newShow);
 
-    DBService.createShow(newShow)
-    renderShows()
-        // .then(show => {
-            
-        //     setTimeout(() => {
-        //         window.location = '/index.html';
-        //     }, 500);
-        // })
-        // .catch(error => {
-        //     console.error("Errore durante la creazione dello spettacolo:", error);
-        // });
-    }
 
-    
 
-    // ... Resto del codice ...
+
 
 }
 

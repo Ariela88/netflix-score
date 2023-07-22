@@ -33,7 +33,7 @@ class DBService {
 
 
 static createShow(show) {
-    const url = "https://64b512caf3dbab5a95c6a515.mockapi.io/NetflixFilm/" + show.id;
+    const url = "https://64b512caf3dbab5a95c6a515.mockapi.io/NetflixFilm/" + show;
     return fetch(url, {
         method: "post",
         body: JSON.stringify(show),
