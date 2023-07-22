@@ -9,7 +9,7 @@ class AppController {
         this.confirmBtn = this.favDialog.querySelector("#confirmBtn");
     }
 
-    
+
 
 
     toggleFormDialog() {
@@ -25,10 +25,10 @@ class AppController {
 
         this.favDialog = document.getElementById('favDialog');
 
-        // Ottieni il riferimento al form
+
         const form = document.getElementById('favDialog');
 
-        // Assegna l'evento submit al form
+
         form.addEventListener('submit', (event) => this.sendData(event));
         DBService.getAllShows()
             .then(shows => {
@@ -134,14 +134,15 @@ class AppController {
             imageUrl: formData.get('imageUrl'),
             isOver: formData.get('isOver') === "on" ? true : false,
             upVotes: 0,
-            downVotes: 0
+            downVotes: 0,
+            id:100
         };
 
         console.log(newShow);
 
         DBService.createShow(newShow)
-        // renderShows()
-        
+            // renderShows()
+
             .then(show => {
 
                 setTimeout(() => {
@@ -152,7 +153,7 @@ class AppController {
                 console.error("Errore durante la creazione dello spettacolo:", error);
             });
 
-           
+
     }
 
 
