@@ -6,7 +6,7 @@ class AppController {
         this.favDialog = document.getElementById('favDialog');
         this.openDialogBtn = document.getElementById('openDialogBtn');
         this.confirmBtn = this.favDialog.querySelector("#confirmBtn");
-        this.favDialog.querySelector('button[value="cancel"]').addEventListener('click', () => this.favDialog.close());
+        this.favDialog.querySelector('button[value="cancel"]').addEventListener('click',()=> this.closeDialog())
     }
 
     toggleFormDialog() {
@@ -171,4 +171,8 @@ class AppController {
                 console.error("Errore durante l'eliminazione dello spettacolo:", error);
             });
     }
+
+    closeDialog() {
+        document.getElementById('favDialog').style.display = 'none';
+      }
 }
