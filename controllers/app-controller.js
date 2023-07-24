@@ -173,6 +173,10 @@ class AppController {
     }
 
     closeDialog() {
-        document.getElementById('favDialog').style.display = 'none';
+        document.getElementById('create').style.display = 'none';
+      }
+
+      openFormDialog() {
+        document.getElementById('create').style.display = 'block';
       }
 }
