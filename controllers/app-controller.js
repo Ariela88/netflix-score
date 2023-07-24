@@ -109,7 +109,7 @@ class AppController {
             isOver: formData.get('isOver') === "on",
             upVotes: 0,
             downVotes: 0,
-            id: 10
+            
         };
 
         console.log(newShow);

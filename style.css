@@ -20,6 +20,8 @@ h1 {
 }
 
 
+
+
 .add-div {
     display: flex;
     flex-direction: column;
@@ -51,7 +53,7 @@ span {
 }
 
 #create {
-   
+
     top: 0
 }
 
@@ -166,20 +168,20 @@ dialog {
     width: 500px;
     height: 500px;
     justify-content: space-evenly;
-    align-items: center;    
+    align-items: center;
     background-color: black;
     border: 2px solid rgb(220, 13, 13);
     color: white;
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-   
- 
+
+
 }
 
 
 form {
 
     font-size: 16px;
-   
+
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
@@ -188,23 +190,23 @@ form {
 
 }
 
-form h3{
+form h3 {
     font-size: 24px;
 }
 
-input{
-    width:fit-content;
+input {
+    width: fit-content;
 }
 
-label{
-    width:max-content;
+label {
+    width: max-content;
 }
 
 input label {
     margin-left: 20px;
 }
 
-.btn-data{
+.btn-data {
     display: flex;
     width: 100%;
     align-items: center;
@@ -213,7 +215,7 @@ input label {
 
 }
 
-.btn-data button{
+.btn-data button {
     width: 100px;
 }
 
@@ -259,13 +261,13 @@ footer .social-cont .social-list {
 }
 
 footer .social-cont .social-list>li {
-    margin: 8px 8px 8px 0;
+    margin: 8px;
     display: inline-block;
     vertical-align: top;
-    height: 32px;
-    width: 32px;
-    border-radius: 6em;
-    background-color: rgb(220, 13, 13);
+    height: 40px;
+    width: 40px;
+
+    background-color: rgb(255, 255, 255);
 }
 
 footer .social-cont .social-list li img {
@@ -277,66 +279,67 @@ footer .social-cont .social-list>li:hover {
 }
 
 
-@media (max-width: 500px){
-    body{
+@media (max-width: 500px) {
+    body {
         box-sizing: border-box;
-       
+
     }
 
-    h1{
+    h1 {
         margin-top: 30px;
         font-size: 80px;
     }
 
-    #openDialogBtn{
+    #openDialogBtn {
 
         margin: 0;
     }
 
-    #openDialogBtn p{
+    #openDialogBtn p {
         margin: 0;
         padding: 0;
     }
-    .add-div{
-        
+
+    .add-div {
+
         margin-bottom: 30px;
 
     }
 
 
-    #btn-container{
+    #btn-container {
         width: 100%;
         gap: 10px;
         flex-direction: column;
     }
 
-   .div-btn-vote{
-    width: 100%;
-    padding: 0;
-  
-    margin: 0;
-    gap: 0;
-        
-       
+    .div-btn-vote {
+        width: 100%;
+        padding: 0;
+
+        margin: 0;
+        gap: 0;
+
+
     }
 
-    #favDialog{
-       width: 100%;
-       flex-direction: column;
-       align-items: center;
-       justify-content: center;
-       margin: 0;
-       padding-top: 30px;
+    #favDialog {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        margin: 0;
+        padding-top: 30px;
     }
 
-    #favDialog h3{
+    #favDialog h3 {
         display: flex;
         flex-wrap: wrap;
         font-size: 35px;
-       
+
     }
 
-    #favDialog div{
+    #favDialog div {
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -346,38 +349,38 @@ footer .social-cont .social-list>li:hover {
         margin-bottom: 20px;
     }
 
-    input{
-        width:70%;
+    input {
+        width: 70%;
     }
-    
-    label{
-        width:100%;
+
+    label {
+        width: 100%;
     }
-    
+
     input label {
         margin-left: 20px;
     }
 
-    #shows-container{
+    #shows-container {
         padding-left: 0;
 
 
     }
 
 
-    li{
+    li {
         width: 100%;
         height: auto;
         margin-bottom: 20px;
         margin-top: 40px;
     }
 
-    .div-btn-vote button{
+    .div-btn-vote button {
         width: 50%;
         padding: 8px;
     }
 
-    footer{
+    footer {
         padding-bottom: 0;
     }
 }
